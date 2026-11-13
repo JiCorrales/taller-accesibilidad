@@ -8,6 +8,10 @@ El sitio viene en dos versiones:
 
 Las pruebas usan **Playwright** (controla el navegador) y **axe-core** (motor de reglas WCAG de Deque).
 
+## Documento de investigación
+
+Este taller acompaña la investigación *Gestión de Pruebas Automáticas: Pruebas de Accesibilidad en el Desarrollo e Implementación de Software* (curso IC-6831, Grupo 7). El documento está en [`investigacion/investigacion-accesibilidad.pdf`](investigacion/investigacion-accesibilidad.pdf); la carpeta `investigacion/` incluye también la fuente LaTeX y sus imágenes.
+
 ## Cómo se ve
 
 El mismo formulario, antes y después de corregir los errores de accesibilidad:
