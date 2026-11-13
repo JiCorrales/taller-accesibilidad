@@ -8,6 +8,24 @@ El sitio viene en dos versiones:
 
 Las pruebas usan **Playwright** (controla el navegador) y **axe-core** (motor de reglas WCAG de Deque).
 
+## Cómo se ve
+
+El mismo formulario, antes y después de corregir los errores de accesibilidad:
+
+| Antes (`sitio/antes/`) | Después (`sitio/despues/`) |
+|---|---|
+| ![Formulario de citas con errores: campos sin etiqueta visible, texto de bajo contraste y botón de borrar sin nombre](docs/img/sitio-antes.png) | ![Formulario de citas corregido: etiquetas visibles sobre cada campo, contraste suficiente y enlace de ayuda](docs/img/sitio-despues.png) |
+
+El reporte HTML de Playwright para cada versión (`npm run reporte:antes` y `npm run reporte:despues`):
+
+| Antes: fallan las 8 pruebas | Después: pasan las 8 pruebas |
+|---|---|
+| ![Reporte de Playwright de la versión con errores: 8 pruebas fallidas](docs/img/reporte-antes.png) | ![Reporte de Playwright de la versión corregida: 8 pruebas aprobadas](docs/img/reporte-despues.png) |
+
+Al abrir una prueba fallida, el reporte lista cada violación que encontró axe, con su nivel de impacto:
+
+![Detalle de la prueba CP-01 en el reporte: ocho violaciones de axe, cuatro críticas y cuatro graves](docs/img/reporte-antes-cp01.png)
+
 ## Requisitos
 
 - Node.js 20 o superior (https://nodejs.org)
