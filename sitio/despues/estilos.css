@@ -1,0 +1,20 @@
+body { font-family: Arial, sans-serif; margin: 0; background: #ffffff; color: #222; }
+.saltar { position: absolute; left: -9999px; top: 0; background: #004d40; color: #fff; padding: 8px 12px; }
+.saltar:focus { left: 8px; top: 8px; }
+.encabezado { display: flex; align-items: center; gap: 12px; background: #e8f4f2; padding: 12px 24px; }
+.logo { width: 40px; height: 40px; }
+.marca { font-size: 20px; font-weight: bold; color: #00695c; margin: 0; }
+.encabezado nav { margin-left: auto; }
+.encabezado a { color: #004d40; }
+.contenido { max-width: 520px; margin: 24px auto; padding: 0 16px; }
+.ayuda { color: #555; font-size: 15px; }
+.ayuda a { color: #004d40; }
+form { display: flex; flex-direction: column; gap: 6px; }
+label { font-weight: bold; margin-top: 6px; }
+input, select { padding: 8px; border: 1px solid #767676; font-size: 16px; }
+input:focus, select:focus, button:focus, a:focus { outline: 3px solid #b35900; outline-offset: 2px; }
+.boton { background: #00695c; color: #ffffff; padding: 10px; border: none; font-size: 16px; cursor: pointer; border-radius: 4px; margin-top: 10px; }
+.icono { background: none; border: 1px solid #767676; cursor: pointer; width: 44px; height: 44px; align-self: flex-start; }
+.icono img { width: 20px; }
+.error { color: #b00020; font-size: 14px; }
+.mensaje { font-weight: bold; color: #1b5e20; }

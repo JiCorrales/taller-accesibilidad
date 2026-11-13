@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="encabezado">
+    <img src="logo.svg" class="logo">
+    <div class="marca">Clínica Vida Sana</div>
+    <a href="#"></a>
+  </div>
+
+  <div class="contenido">
+    <h1>Reserve su cita médica</h1>
+    <h4>Complete el formulario</h4>
+    <p class="ayuda">Los campos marcados son obligatorios. Si tiene dudas haga clic <a href="ayuda.html">aquí</a>.</p>
+
+    <form id="form-cita">
+      <input type="text" id="nombre" placeholder="Nombre completo">
+      <input type="text" id="cedula" placeholder="Cédula">
+      <input type="email" id="correo" placeholder="Correo electrónico">
+
+      <select id="especialidad">
+        <option>Medicina general</option>
+        <option>Pediatría</option>
+        <option>Odontología</option>
+      </select>
+
+      <input type="date" id="fecha">
+
+      <div class="boton" id="enviar" onclick="reservar()">Reservar</div>
+      <button type="button" class="icono" onclick="limpiar()"><img src="borrar.svg"></button>
+    </form>
+
+    <p id="mensaje" class="mensaje"></p>
+  </div>
+
+  <script>
+    function reservar() {
+      var nombre = document.getElementById('nombre').value.trim();
+      var msg = document.getElementById('mensaje');
+      if (!nombre) {
+        msg.style.color = 'red';
+        msg.textContent = 'Error en el formulario';
+        return;
+      }
+      msg.style.color = 'green';
+      msg.textContent = 'Cita reservada';
+    }
+    function limpiar() {
+      document.getElementById('form-cita').reset();
+      document.getElementById('mensaje').textContent = '';
+    }
+  </script>
+</body>
+</html>

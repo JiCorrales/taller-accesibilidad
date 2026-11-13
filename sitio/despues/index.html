@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reservar cita | Clínica Vida Sana</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <a class="saltar" href="#principal">Saltar al contenido principal</a>
+
+  <header class="encabezado">
+    <img src="logo.svg" class="logo" alt="Clínica Vida Sana">
+    <p class="marca" aria-hidden="true">Clínica Vida Sana</p>
+    <nav aria-label="Principal">
+      <a href="ayuda.html">Ayuda</a>
+    </nav>
+  </header>
+
+  <main id="principal" class="contenido">
+    <h1>Reserve su cita médica</h1>
+    <h2>Complete el formulario</h2>
+    <p class="ayuda">Los campos con asterisco (*) son obligatorios. Si tiene dudas, consulte la <a href="ayuda.html">página de ayuda para reservar citas</a>.</p>
+
+    <form id="form-cita" novalidate>
+      <label for="nombre">Nombre completo *</label>
+      <input type="text" id="nombre" name="nombre" autocomplete="name" required aria-describedby="error-nombre">
+      <span id="error-nombre" class="error"></span>
+
+      <label for="cedula">Cédula *</label>
+      <input type="text" id="cedula" name="cedula" inputmode="numeric" required>
+
+      <label for="correo">Correo electrónico *</label>
+      <input type="email" id="correo" name="correo" autocomplete="email" required>
+
+      <label for="especialidad">Especialidad</label>
+      <select id="especialidad" name="especialidad">
+        <option>Medicina general</option>
+        <option>Pediatría</option>
+        <option>Odontología</option>
+      </select>
+
+      <label for="fecha">Fecha de la cita</label>
+      <input type="date" id="fecha" name="fecha">
+
+      <button type="submit" id="enviar" class="boton">Reservar</button>
+      <button type="button" id="limpiar" class="icono" aria-label="Limpiar formulario">
+        <img src="borrar.svg" alt="">
+      </button>
+    </form>
+
+    <p id="mensaje" class="mensaje" role="status" aria-live="polite"></p>
+  </main>
+
+  <script>
+    var form = document.getElementById('form-cita');
+    var msg = document.getElementById('mensaje');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var nombre = document.getElementById('nombre');
+      var error = document.getElementById('error-nombre');
+      if (!nombre.value.trim()) {
+        nombre.setAttribute('aria-invalid', 'true');
+        error.textContent = 'Error: escriba su nombre completo.';
+        msg.textContent = '';
+        nombre.focus();
+        return;
+      }
+      nombre.removeAttribute('aria-invalid');
+      error.textContent = '';
+      msg.textContent = 'Listo: su cita fue reservada.';
+    });
+    document.getElementById('limpiar').addEventListener('click', function () {
+      form.reset();
+      msg.textContent = '';
+      document.getElementById('error-nombre').textContent = '';
+    });
+  </script>
+</body>
+</html>

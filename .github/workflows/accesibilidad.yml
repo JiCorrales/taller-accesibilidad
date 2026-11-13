@@ -1,0 +1,25 @@
+# Integración continua: corre las pruebas de accesibilidad en cada push o pull request.
+# Si aparece una violación WCAG 2.2 AA, el pipeline falla y el cambio no se integra.
+name: Pruebas de accesibilidad
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  accesibilidad:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:despues
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reporte-accesibilidad
+          path: reporte-despues/
