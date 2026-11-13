@@ -1,0 +1,13 @@
+body { font-family: Arial, sans-serif; margin: 0; background: #ffffff; color: #333; }
+.encabezado { display: flex; align-items: center; gap: 12px; background: #e8f4f2; padding: 12px 24px; }
+.logo { width: 40px; height: 40px; }
+.marca { font-size: 20px; font-weight: bold; color: #7fc4b8; }
+.contenido { max-width: 520px; margin: 24px auto; padding: 0 16px; }
+.ayuda { color: #b5b5b5; font-size: 13px; }
+form { display: flex; flex-direction: column; gap: 10px; }
+input, select { padding: 8px; border: 1px solid #ddd; font-size: 15px; }
+input:focus, select:focus { outline: none; }
+.boton { background: #8fd3c7; color: #ffffff; padding: 10px; text-align: center; cursor: pointer; border-radius: 4px; }
+.icono { background: none; border: none; cursor: pointer; width: 32px; }
+.icono img { width: 20px; }
+.mensaje { font-weight: bold; }
