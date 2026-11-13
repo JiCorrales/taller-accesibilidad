@@ -26,6 +26,29 @@ Al abrir una prueba fallida, el reporte lista cada violación que encontró axe,
 
 ![Detalle de la prueba CP-01 en el reporte: ocho violaciones de axe, cuatro críticas y cuatro graves](docs/img/reporte-antes-cp01.png)
 
+## Qué cambia entre las dos versiones y por qué
+
+Cada fila es un error sembrado en `sitio/antes/`, su corrección en `sitio/despues/`, a quién afecta y qué prueba lo detecta. La última columna muestra el punto central del taller: axe encuentra los errores de reglas, las pruebas propias (CP-05 a CP-08) encuentran los de comportamiento, y algunos solo aparecen en una revisión manual.
+
+| Error en "antes" | Corrección en "después" | Por qué importa | Criterio WCAG | Quién lo detecta |
+|---|---|---|---|---|
+| La página no declara idioma | `<html lang="es">` | El lector de pantalla necesita el idioma para pronunciar bien el texto | 3.1.1 | axe y CP-04 |
+| La página no tiene título | Un `<title>` que nombra la página y el sitio | El título es lo primero que se anuncia y lo que identifica la pestaña | 2.4.2 | axe y CP-04 |
+| Logo sin texto alternativo | `alt="Clínica Vida Sana"` | Sin texto alternativo, la imagen no existe para quien no la ve | 1.1.1 | axe |
+| Enlace vacío en el encabezado | Enlace "Ayuda" dentro de un `<nav>` | Un enlace sin texto se anuncia como "enlace", sin decir adónde lleva | 2.4.4, 4.1.2 | axe |
+| Texto de bajo contraste (marca, ayuda y botón) | Colores con contraste de al menos 4.5:1 | Con baja visión, o con la pantalla bajo el sol, el texto claro no se lee | 1.4.3 | axe |
+| Campos solo con *placeholder* | `<label for>` visible sobre cada campo | El *placeholder* desaparece al escribir; la etiqueta permanece y además se puede pulsar | 1.3.1, 3.3.2 | CP-05 (axe solo marca el campo de fecha) |
+| Lista de especialidades sin nombre | `<label for="especialidad">` | El lector de pantalla anuncia una lista sin decir para qué es | 1.3.1, 4.1.2 | axe |
+| Botón "Reservar" hecho con `<div onclick>` | `<button type="submit">` | Un `<div>` no recibe el foco ni responde al teclado: sin ratón no se puede enviar el formulario | 2.1.1 | CP-06 |
+| Botón de ícono sin nombre | `aria-label="Limpiar formulario"` y `alt=""` en el ícono | El lector de pantalla solo dice "botón", sin indicar qué hace | 4.1.2 | axe |
+| `outline: none` al enfocar | Contorno de 3 px en campos, botones y enlaces | Quien navega con teclado no sabe en qué elemento está | 2.4.7 | CP-08 |
+| Mensaje de resultado sin `aria-live` | `role="status"` y `aria-live="polite"` | El resultado aparece en pantalla, pero el lector de pantalla no lo anuncia | 4.1.3 | CP-07 |
+| Error indicado solo con color rojo | Texto "Error: ...", `aria-invalid`, `aria-describedby` y foco en el campo | Quien no distingue el rojo, o no ve la pantalla, no se entera del error | 1.4.1, 3.3.1 | Revisión manual |
+| Salto de encabezado de `<h1>` a `<h4>` | `<h2>` | Quien navega por encabezados pierde la estructura de la página | Buena práctica (1.3.1) | Revisión manual |
+| Enlace que dice "aquí" | "página de ayuda para reservar citas" | En una lista de enlaces, "aquí" no dice adónde lleva | Buena práctica (2.4.4) | Revisión manual |
+
+Además de corregir esos errores, la versión corregida agrega regiones (`header`, `nav`, `main`), un enlace para saltar al contenido y `autocomplete` en nombre y correo.
+
 ## Requisitos
 
 - Node.js 20 o superior (https://nodejs.org)
